@@ -640,6 +640,7 @@ footer{border-top:1px solid var(--line);padding-block:44px 56px;background:rgba(
         <h2>MPGK Roket Takımı</h2>
         <p>Eskişehir Osmangazi Üniversitesi Mühendislik Projeleri Geliştirme Kulübü bünyesinde çalışan bir öğrenci roket takımıyız. Her sezon TEKNOFEST Roket Yarışması için sıfırdan bir roket tasarlıyor, üretiyor ve raporlar doğrultusunda atış alanında uçurmayı hedefliyoruz.</p>
         <p>Burun konisinin kompozit kalıbından uçuş kontrol bilgisayarının gömülü yazılımına, kanatçık geometrisinden paraşüt ayrılma mekanizmasına kadar her şeyi kendimiz üretiyoruz.</p>
+        <p>2020–2021, 2021–2022, 2023–2024 ve 2025–2026 sezonlarında TEKNOFEST finalindeydik.</p>
         <p><strong>2026 sezonunda BALKIN ile yarıştık.</strong> Kritik Tasarım ve Atışa Hazırlık raporlarını geçip finale kaldık, sahadaki bütün kontrollerden çıktık ve roketi uçurduk. Telemetri bağlantısı uçuş boyunca kopmadı; roketin tüm parçalarını geri aldık.</p>
         <p>Şimdi yeni sezon için ekibi büyütüyoruz.</p>
       </div>
@@ -677,7 +678,7 @@ footer{border-top:1px solid var(--line);padding-block:44px 56px;background:rgba(
       <li class="crew-m rv"><div class="crew-ph"><img src="ekip-rabia.jpg" alt="Rabia Han" loading="lazy" width="640" height="800"></div><b>Rabia Han</b><span class="role">Aerodinamik Birim Sorumlusu</span><span class="dep">Makine Mühendisliği</span></li>
       <li class="crew-m rv" style="--d:70ms"><div class="crew-ph"><img src="ekip-fatih.jpg" alt="Fatih Akgün" loading="lazy" width="640" height="800"></div><b>Fatih Akgün</b><span class="role">Mekanik Tasarım Sorumlusu</span><span class="dep">Uçak Mühendisliği</span></li>
       <li class="crew-m rv" style="--d:140ms"><div class="crew-ph"><img src="ekip-cem.jpg" alt="Mustafa Cem Karadeniz" loading="lazy" width="640" height="800"></div><b>Mustafa Cem Karadeniz</b><span class="role">Uçuş Yazılım Sorumlusu</span><span class="dep">Elektrik-Elektronik Mühendisliği</span></li>
-      <li class="crew-m rv"><div class="crew-ph"><img src="ekip-sevde.jpg" alt="Sevde İrem Boyraz" loading="lazy" width="640" height="800"></div><b>Sevde İrem Boyraz</b><span class="role">Aerodinamik Birim Sorumlusu</span><span class="dep">Uçak Mühendisliği</span></li>
+      <li class="crew-m rv"><div class="crew-ph"><img src="ekip-sevde.jpg" alt="Sevde İrem Boyraz" loading="lazy" width="640" height="800"></div><b>Sevde İrem Boyraz</b><span class="role">Aerodinamik Sorumlusu</span><span class="dep">Uçak Mühendisliği</span></li>
       <li class="crew-m rv" style="--d:70ms"><div class="crew-ph"><img src="ekip-mert.jpg" alt="Mert Öztürk" loading="lazy" width="640" height="800"></div><b>Mert Öztürk</b><span class="role">Aviyonik Donanım Sorumlusu</span><span class="dep">Elektrik-Elektronik Mühendisliği</span></li>
       <li class="crew-m rv" style="--d:140ms"><div class="crew-ph ph" aria-hidden="true"><span>AA</span></div><b>Azra Aritürk</b><span class="role">Görev Yükü Aviyonik Sorumlusu</span><span class="dep">Elektrik-Elektronik Mühendisliği</span></li>
     </ul>
@@ -933,9 +934,14 @@ footer{border-top:1px solid var(--line);padding-block:44px 56px;background:rgba(
         </div>
 
         <div class="field" id="w-why">
-          <label for="f-why">Neden MPGK Roket Takımı? <span class="req">*</span> <span class="hint">Tercihinin sebebi.</span></label>
+          <label for="f-why">Takımda yer alma istemendeki motivasyonun ne? <span class="req">*</span></label>
           <textarea id="f-why" name="why" placeholder="Neden başka bir takım değil de burası? Buradan ne öğrenmek istiyorsun?"></textarea>
           <p class="err" id="e-why">Bu alanı boş bırakma.</p>
+        </div>
+
+        <div class="field" id="w-extra">
+          <label for="f-extra">Eklemek istediklerin <span class="hint">Zorunlu değil.</span></label>
+          <textarea id="f-extra" name="extra" placeholder="Bize sormak istediğin ya da bilmemizi istediğin bir şey varsa buraya yazabilirsin."></textarea>
         </div>
 
         <div>
@@ -1011,7 +1017,8 @@ const CONFIG = {
     summer:  "entry.1165547367",
     hours:   "entry.1749130307",
     about:   "entry.450339845",
-    why:     "entry.148100367"
+    why:     "entry.148100367",
+    extra:   "entry.1649691348"
   }
 };
 
@@ -1179,7 +1186,8 @@ const CONFIG = {
       summer: (document.querySelector('input[name="summer"]:checked')||{}).value || "",
       hours: val("f-hours"),
       about: val("f-about"),
-      why: val("f-why")
+      why: val("f-why"),
+      extra: val("f-extra")
     };
   }
 
@@ -1228,7 +1236,8 @@ const CONFIG = {
         "Haftada kaç gün: "+data.hours,
         "",
         "Kendinden bahset:","  "+data.about,
-        "","Neden MPGK?:","  "+data.why
+        "","Katılma motivasyonu:","  "+data.why,
+        "","Eklemek istedikleri:","  "+(data.extra||"—")
       ].join("\n");
       finish("Form henüz bağlanmadı",
              "Bu site bir kayıt sistemine bağlanmadığı için başvuru gönderilmedi. Aşağıdaki bilgileri takıma iletebilirsin.",
